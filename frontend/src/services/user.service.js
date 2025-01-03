@@ -1,8 +1,8 @@
-const URL = "http://localhost:8000/api";
+// const URL = "http://localhost:8000/api";
 const apiUrl = import.meta.env.VITE_API_URI;
 
 export const register = (data) => {
-  return fetch(`${apiUrl}/auth/register`, {
+  return fetch(`${apiUrl}/api/auth/register`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -12,7 +12,7 @@ export const register = (data) => {
 };
 
 export const login = (data) => {
-  return fetch(`${apiUrl}/auth/login`, {
+  return fetch(`${apiUrl}/api/auth/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

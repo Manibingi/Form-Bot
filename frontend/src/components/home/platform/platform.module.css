@@ -1,0 +1,51 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 70px;
+}
+
+.section1 {
+  display: flex;
+  justify-content: space-around;
+}
+
+.section2 {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.img {
+  width: 100px;
+  height: 100px;
+  background-color: #1a202c;
+  border: 1px solid grey;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img img {
+  background-color: transparent;
+}
+
+.section3 {
+  margin-left: 150px;
+}
+
+.section3 .title {
+  font-family: "Outfit", serif;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 43px;
+  color: white;
+}
+
+.section3 .detail {
+  font-family: "Open Sans", serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 30px;
+  color: #a0aec0;
+  width: 40vw;
+}

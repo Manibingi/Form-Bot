@@ -1,0 +1,417 @@
+[data-theme="light"] {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+}
+
+[data-theme="dark"] {
+  /* --bg-color : linear-gradient(#121212, #171923, #171923); */
+  --navbar-color: #18181b;
+  --text-color: #ffffffeb;
+  --bg-color: #1f1f23;
+  --border-color: #d6d6d6;
+}
+
+.FormDashboard {
+  background: var(--bg-color);
+  width: 100vw;
+  /* overflow: scroll; */
+  height: 100vh;
+  max-width: 100%;
+  max-height: 100%;
+}
+.navbar {
+  display: flex;
+  justify-content: center;
+  height: 8vh;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  float: right;
+  position: sticky;
+}
+
+.workName {
+  width: 60vw;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  /* border-radius: 1px solid ; */
+}
+
+.workName select {
+  background-color: transparent;
+  /* color: #fff; */
+  color: var(--text-color);
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
+option {
+  background: var(--bg-color);
+}
+
+.logout {
+  color: red;
+}
+
+.navend {
+  width: 50vw;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 100px;
+}
+.navend button {
+  margin-right: 70px;
+  color: #fff;
+  background-color: #1a5fff;
+  padding: 8px 20px;
+  border: none;
+  border-radius: 8px;
+}
+
+.container {
+  position: relative;
+  /* background-color: red; */
+}
+
+/* toogle */
+
+.dark {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: Open sans;
+  font-size: 1rem;
+  /* color: #ffffffeb; */
+  color: var(--text-color);
+}
+
+/* lgiht&dark Switch */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #2196f3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* create folder and typebot */
+
+.createBot {
+  width: 100vw;
+  max-width: 100%;
+  position: absolute;
+  background: var(--bg-color);
+}
+
+.createFolder {
+  max-width: 100%;
+  margin: 50px 50px 30px 250px;
+  width: 80vw;
+  max-height: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.createFolderBtn {
+  color: #fff;
+  /* background-color: red; */
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+li {
+  list-style: none;
+}
+
+.createFolderBtn button {
+  color: white;
+  background-color: rgb(62, 62, 62);
+  padding: 10px 22px;
+  border-radius: 5px;
+  border: none;
+}
+
+.newBtn i {
+  color: #fff;
+  margin-right: 5px;
+  /* background-color: transparent; */
+}
+
+.createTypeBot {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.createTypeBot button {
+  position: relative;
+}
+
+.createTypeBot button i {
+  color: #f55050;
+  font-weight: 500;
+  position: absolute;
+  top: -1.3vh;
+  right: -0.3vw;
+  font-size: 1.1rem;
+}
+
+.createBotBtn {
+  background-color: #1a5fff;
+  color: #fff;
+  border: none;
+  height: 240px;
+  width: 200px;
+  border-radius: 5px;
+}
+
+.createFormBtn {
+  background-color: #ccccccad;
+  /* color: #fff; */
+  color: var(--text-color);
+  border: none;
+  height: 240px;
+  width: 200px;
+  border-radius: 5px;
+  font-weight: 400;
+  font-size: 18px;
+  font-family: "Open Sans", serif;
+  line-height: 21px;
+  text-align: center;
+}
+
+.plus {
+  font-size: 4.5rem;
+  font-weight: 400;
+}
+
+.plusText {
+  font-size: 1.2rem;
+  font-weight: 300;
+}
+
+/* modal one */
+
+.shareModal {
+  width: 100vw;
+  position: absolute;
+  max-width: 100%;
+  /* background-color: #1A5F; */
+}
+
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  max-width: 100%;
+  width: 100vw;
+  /* background-color: #ccc; */
+}
+
+.shareForm {
+  background-color: #121212;
+  color: #fff;
+  width: 60vw;
+  border-radius: 20px;
+  padding: 10px 30px 70px 30px;
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* max-width: 100%; */
+}
+/* .shareForm label{
+    display: flex;
+} */
+
+.shareText {
+  font-size: 2rem;
+}
+
+.inputShare {
+  border: none;
+  background-color: #1f1f1f;
+}
+
+.editText select {
+  background-color: #121212;
+  color: white;
+  border: none;
+  padding: 10px;
+}
+
+.email {
+  display: flex;
+  justify-content: space-between;
+}
+
+.shareForm input {
+  width: 100%;
+  height: 8vh;
+  border: none;
+  background-color: rgb(62, 62, 62);
+}
+
+.sendBtn {
+  padding: 10px;
+  width: 100%;
+  border-radius: 8px;
+  padding: 5px;
+  font-size: 1.2rem;
+  background-color: #1a5fff;
+  color: #fff;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.exitForm {
+  display: flex;
+  justify-content: end;
+  font-size: 1.5rem;
+  margin: 10px 10px 30px;
+}
+.exitForm button {
+  color: red;
+  font-size: 1.5rem;
+  background-color: transparent;
+  border: none;
+}
+
+/* modal 2 */
+
+.modalTwo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 57vh;
+  max-width: 100%;
+  width: 90vw;
+  /* background-color: #1A5FFF; */
+}
+
+.createFolderForm {
+  background-color: #121212;
+  padding: 20px;
+  width: 29vw;
+  border-radius: 20px;
+}
+
+.createFolderForm label {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.createFolderForm input {
+  width: 100%;
+  height: 8vh;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  /* gap: 30px; */
+  margin-top: 30px;
+}
+
+.div {
+  font-size: 2.5rem;
+  font-weight: 200;
+  color: #3e3d3d;
+}
+
+.buttons button {
+  padding: 10px;
+  border: none;
+  background-color: transparent;
+  /* color: #fff; */
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.doneBtn {
+  color: #1a5fff;
+}
+
+.cancelBtn {
+  color: #fff;
+}
+
+/* name mapping */
+
+.folderList {
+  display: flex;
+  gap: 10px;
+}
+
+.fName i {
+  color: #f55050;
+  margin-left: 5px;
+  font-weight: 300;
+}
+
+.createFolderName {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}

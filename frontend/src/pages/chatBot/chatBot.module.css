@@ -1,0 +1,101 @@
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.chatContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 50px 100px;
+  width: 50%;
+  height: 85vh;
+}
+
+.chatContainer h2 {
+  text-align: center;
+}
+.bubbleStyle {
+  background-color: rgba(241, 241, 241, 0.814);
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  font-family: Open sans;
+  font-size: 1rem;
+}
+.inputStyle {
+  background-color: #ff8e21;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  margin-bottom: 10px;
+  font-size: 1rem;
+  font-family: Open sans;
+}
+
+.inputDiv {
+  text-align: right;
+}
+
+.bubbleDiv {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.bubbleDiv img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.chatBox {
+  height: 80vh;
+}
+
+.inputSend {
+  display: flex;
+}
+
+.inputContainer {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  gap: 10px;
+}
+
+.inputContainer input {
+  width: 30%;
+  color: #040404;
+  border: none;
+  box-shadow: 0px 0px 5px 0px grey;
+  margin-top: 20px;
+}
+.inputContainer button {
+  margin-top: 15px;
+  padding: 5px 10px;
+  font-family: Open sans;
+  font-size: 1rem;
+  background-color: #1a5fff;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.inputContainer img {
+  display: flex;
+  width: 30px;
+  height: 30px;
+  /* border-radius: 50%; */
+  object-fit: cover;
+}
+
+.thankyouDiv {
+  margin-top: 20px;
+}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import style from "./chatbot.module.css";
+import style from "./chatBot.module.css";
 // import bot from "../../assets/profile-bot.png";
 // import send from "../../../assets/send";
 import axios from "axios";

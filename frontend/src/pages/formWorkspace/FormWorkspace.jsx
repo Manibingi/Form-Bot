@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import style from "./formWorkspace.module.css";
 import axios from "axios";
+import { toast } from "react-toastify";
 import { useTheme } from "../DarkNLight";
 import Responses from "../response/Response";
 import { useNavigate, useParams } from "react-router-dom";
@@ -15,9 +16,9 @@ const FormWorkspace = () => {
   const [formName, setFormName] = useState("");
   const [fId, setformId] = useState(null);
   const [res, setRes] = useState(true);
+  const [len, setLen] = useState(0);
 
   const { folderId, formId } = useParams();
-  // const formId = localStorage.getItem("formId"); // Get formId from localStorage or from URL parameters
 
   // Fetch form data when the component mounts
   useEffect(() => {
@@ -32,6 +33,8 @@ const FormWorkspace = () => {
               },
             }
           );
+          const formLength = response.data.form.fields;
+          setLen(formLength.length);
           if (response.data.success) {
             const form = response.data.form;
             setFormName(form.name); // Set form name
@@ -80,8 +83,7 @@ const FormWorkspace = () => {
 
   // Handle saving the form data
   const saveForm = async () => {
-    if (formId) {
-      console.log("update");
+    if (len > 0) {
       updateForm();
     } else {
       try {
@@ -106,10 +108,9 @@ const FormWorkspace = () => {
           }
         );
         setformId(response.data.formBot._id);
-        console.log("save");
 
         if (response.data.success) {
-          alert("Form Saved successfully!");
+          toast.success("Form Save successfull", { position: "top-right" });
         }
       } catch (error) {
         console.error("Error Saving form:", error);
@@ -136,7 +137,7 @@ const FormWorkspace = () => {
       setFormName(formName);
 
       if (response.data.success) {
-        alert("Form updated successfully!");
+        toast.success("Form Update successfull", { position: "top-right" });
       }
     } catch (error) {
       console.error("Error updating form:", error);
@@ -157,9 +158,7 @@ const FormWorkspace = () => {
       const link = `http://localhost:5173/formbot/${response.data.linkId}`;
       navigator.clipboard.writeText(link);
       alert("Link copied to clipboard: " + link);
-
-      console.log(response.data);
-      alert("Form link generated!");
+      toast.success("Form link generated!", { position: "top-right" });
     } catch (error) {
       console.error("Error sharing form:", error);
     }

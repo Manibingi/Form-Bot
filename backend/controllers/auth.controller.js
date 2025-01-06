@@ -154,11 +154,3 @@ exports.updateUser = async (req, res) => {
     res.status(500).json({ success: false, message: "Server error" });
   }
 };
-
-// exports.getUser = async (req, res) => {
-//   const userId = req.params;
-//   console.log(userId);
-//   const user = await User.findById(userId.id);
-//   res.status(200).json({ user, message: "Fetched" });
-//   console.log(user);
-// };

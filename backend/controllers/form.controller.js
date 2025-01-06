@@ -6,7 +6,6 @@ const { v4: uuidv4 } = require("uuid");
 
 exports.getFormsByFolderId = async (req, res) => {
   const { folderId } = req.params; // Get the folder ID from the request params
-  console.log("Folder ID:", folderId);
   try {
     // Step 1: Find the folder by ID
     const folder = await Folder.findById(folderId).populate("formBots"); // Populate formBots in the folder
@@ -63,7 +62,6 @@ exports.getFormById = async (req, res) => {
 exports.updateFormById = async (req, res) => {
   const { formId } = req.params; // Get formId from request params
   const { name, fields } = req.body; // Get form name and fields to be updated
-  console.log("Form ID:", formId);
   try {
     // Step 1: Find the form by ID
     const form = await FormBot.findById(formId);
@@ -219,7 +217,6 @@ exports.saveFormResponse = async (req, res) => {
         .status(404)
         .json({ success: false, message: "Form not found" });
     }
-    console.log(responses.length);
     // If this is the first response (form is being started), increment the 'started' count
     if (responses && responses.length > 0) {
       // Check if it's the first response to trigger the 'started' increment
@@ -235,12 +232,10 @@ exports.saveFormResponse = async (req, res) => {
 
     await formResponse.save();
 
-    console.log(responses);
     // Increment 'submitted' only if all responses are filled (form is completely submitted)
     const allResponsesSubmitted = responses.every(
       (response) => response.value !== undefined && response.value !== null
     );
-    console.log(allResponsesSubmitted);
     if (!allResponsesSubmitted) {
       form.submittedCount += 1;
       await form.save();
@@ -256,7 +251,6 @@ exports.saveFormResponse = async (req, res) => {
 exports.getFormResponses = async (req, res) => {
   try {
     const { formId } = req.params;
-    console.log("Form ID:", formId);
 
     // Find all responses for the given formId
     const formResponses = await FormResponse.find({ form: formId }).populate(

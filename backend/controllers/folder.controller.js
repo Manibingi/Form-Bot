@@ -5,12 +5,9 @@ const { uuid } = require("uuid");
 
 exports.createFolder = async (req, res) => {
   try {
-    console.log("User:", req.user);
     const { name } = req.body;
     const userId = req.user.id; // Access userId correctly
     // Make sure user is authenticated
-
-    console.log(userId);
     if (!name) {
       return res
         .status(400)
@@ -101,8 +98,6 @@ exports.createFormBot = async (req, res) => {
 
 exports.getFolders = async (req, res) => {
   try {
-    // console.log(req.user.id);
-
     const output = await Folder.find({ userId: req.user.id });
     res.status(200).json({ success: true, output });
   } catch (error) {
@@ -114,7 +109,6 @@ exports.getFolders = async (req, res) => {
 
 exports.getFormsByFolderId = async (req, res) => {
   const { folderId } = req.params; // Get the folder ID from the request params
-  console.log("Folder ID:", folderId);
   try {
     // Step 1: Find the folder by ID
     const folder = await Folder.findById(folderId).populate("formBots"); // Populate formBots in the folder
@@ -171,7 +165,6 @@ exports.getFormById = async (req, res) => {
 exports.updateFormById = async (req, res) => {
   const { formId } = req.params; // Get formId from request params
   const { name, fields } = req.body; // Get form name and fields to be updated
-  console.log("Form ID:", formId);
   try {
     // Step 1: Find the form by ID
     const form = await FormBot.findById(formId);

@@ -22,7 +22,6 @@ export const Login = () => {
     const res = await login(loginFormData);
     if (res.status === 200) {
       const data = await res.json();
-      console.log(data);
       setLoginFormData({
         email: "",
         password: "",

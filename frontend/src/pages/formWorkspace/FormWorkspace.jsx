@@ -110,7 +110,7 @@ const FormWorkspace = () => {
         setformId(response.data.formBot._id);
 
         if (response.data.success) {
-          toast.success("Form Save successfull", { position: "top-right" });
+          toast.success("Form Save successfull", { position: "top-center" });
         }
       } catch (error) {
         console.error("Error Saving form:", error);
@@ -137,7 +137,7 @@ const FormWorkspace = () => {
       setFormName(formName);
 
       if (response.data.success) {
-        toast.success("Form Update successfull", { position: "top-right" });
+        toast.success("Form Update successfull", { position: "top-center" });
       }
     } catch (error) {
       console.error("Error updating form:", error);
@@ -158,7 +158,7 @@ const FormWorkspace = () => {
       const link = `http://localhost:5173/formbot/${response.data.linkId}`;
       navigator.clipboard.writeText(link);
       alert("Link copied to clipboard: " + link);
-      toast.success("Form link generated!", { position: "top-right" });
+      toast.success("Form link generated!", { position: "top-center" });
     } catch (error) {
       console.error("Error sharing form:", error);
     }

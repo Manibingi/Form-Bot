@@ -3,9 +3,11 @@ import style from "./login.module.css";
 import { toast } from "react-toastify";
 import google from "../../assets/Google Icon.png";
 import { Link, useNavigate } from "react-router-dom";
-import { login } from "../../services/user.service";
+import axios from "axios";
+// import { login } from "../../services/user.service";
 
 export const Login = () => {
+  const apiUrl = import.meta.env.VITE_API_URI;
   const navigate = useNavigate();
   const [loginFormData, setLoginFormData] = useState({
     email: "",
@@ -19,18 +21,27 @@ export const Login = () => {
 
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
-    const res = await login(loginFormData);
-    if (res.status === 200) {
-      const data = await res.json();
-      setLoginFormData({
-        email: "",
-        password: "",
-      });
-      localStorage.setItem("token", data.token);
-      toast.success("Login successfull");
-      navigate("/folder");
-    } else {
-      toast.error("Invalid credentials");
+    try {
+      // Send the form data to the backend
+      const response = await axios.post(
+        `${apiUrl}/api/auth/login`,
+        loginFormData
+      );
+      if (response.status === 200) {
+        localStorage.setItem("token", response.data.token);
+        toast.success("Login Successful", {
+          duration: 4000,
+          position: "top-right",
+        });
+        navigate("/folder");
+        toast.success(response.data.message, {
+          duration: 4000,
+          position: "top-right",
+        });
+      }
+    } catch (err) {
+      console.error(err);
+      toast.error("Registration failed!");
     }
   };
 
@@ -38,7 +49,11 @@ export const Login = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
-      navigate("/home");
+      toast.success("User Already logged in", {
+        duration: 4000,
+        position: "top-right",
+      });
+      navigate("/folder");
     }
   }, []);
 

@@ -3,9 +3,11 @@ import style from "./register.module.css";
 import { toast } from "react-toastify";
 import google from "../../assets/Google Icon.png";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 import { register } from "../../services/user.service";
 
 export const Register = () => {
+  const apiUrl = import.meta.env.VITE_API_URI;
   const navigate = useNavigate();
   const [registerData, setRegisterData] = useState({
     userName: "",
@@ -23,18 +25,37 @@ export const Register = () => {
   // controling the submit form and connecting the backend services
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    const res = await register(registerData);
-    if (res.status === 200) {
-      setRegisterData({
-        userName: "",
-        email: "",
-        password: "",
-        confirmPassword: "",
-      });
-      toast("registration Successful");
-      navigate("/login");
-    } else {
-      toast("error");
+    // console.log(formData);
+    try {
+      // Send the form data to the backend
+      const response = await axios.post(
+        `${apiUrl}/api/auth/register`,
+        registerData
+      );
+      console.log(apiUrl);
+      if (response.status === 201) {
+        toast.success(response.data.message, {
+          duration: 4000,
+          position: "top-right",
+        });
+        setRegisterData({
+          userName: "",
+          email: "",
+          password: "",
+          confirmPassword: "",
+        });
+        navigate("/login");
+      }
+
+      if (response.status === 400) {
+        toast.error(response.message, {
+          duration: 4000,
+          position: "top-right",
+        });
+      }
+    } catch (err) {
+      console.error(err.response.data);
+      toast.error("Registration failed!");
     }
   };
 

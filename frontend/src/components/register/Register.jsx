@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import google from "../../assets/Google Icon.png";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { register } from "../../services/user.service";
+// import { register } from "../../services/user.service";
 
 export const Register = () => {
   const apiUrl = import.meta.env.VITE_API_URI;

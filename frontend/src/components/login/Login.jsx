@@ -41,7 +41,7 @@ export const Login = () => {
       }
     } catch (err) {
       console.error(err);
-      toast.error("Registration failed!");
+      toast.error("Login failed!");
     }
   };
 
